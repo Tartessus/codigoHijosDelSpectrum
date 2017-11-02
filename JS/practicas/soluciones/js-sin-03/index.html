@@ -5,18 +5,16 @@
   <title>Practica 5</title>
   <script>
     function factorialRecursivo(numero) {
-      var entero = getEntero(numero);
       var factorial = 1;
-      if(entero > 1)
-        factorial = entero * factorialRecursivo(entero - 1);
+      if(numero > 1)
+        factorial = numero * factorialRecursivo(numero - 1);
 
       return factorial;
     }
 
     function factorial(numero) {
-      var entero = getEntero(numero);
       var factorial = 1;
-      for(var i = entero; i > 1; i--){
+      for(var i = numero; i > 1; i--){
         factorial *= i;
       }
 
@@ -40,15 +38,13 @@
 		Ejemplo: el factorial de 5 (escrito como 5!) es: 5! = 5*4*3*2*1 = 120
 	</p>
 	<script>
-		var numero = prompt("Introduzca numero", "5");
-		if(numeroFactorizable(numero)){
-			document.write("(Bucle 'for') " + numero + "! = " + factorial(numero));
-			document.write("<br/>");
-			document.write("(Recursividad) " + numero + "! = " + factorialRecursivo(numero));
+		var numero = getEntero(prompt("Introduzca numero", "5"));
+		if(!isNaN(numero)){
+			document.write("(Con bucle 'for') " + numero + "! = " + factorial(numero));
+			document.write("<br/>(Con recursividad) " + numero + "! = " + factorialRecursivo(numero));
 		}
-		else{
+		else
 			alert('Se ha introducido un valor incorrecto (deber ser entero > 0)');
-		}
 	</script> 
 </body>
 </html>
