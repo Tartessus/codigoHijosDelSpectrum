@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Practica 5</title>
+  <script>
+    function factorialRecursivo(numero) {
+      var entero = getEntero(numero);
+      var factorial = 1;
+      if(entero > 1)
+        factorial = entero * factorialRecursivo(entero - 1);
+
+      return factorial;
+    }
+
+    function factorial(numero) {
+      var entero = getEntero(numero);
+      var factorial = 1;
+      for(var i = entero; i > 1; i--){
+        factorial *= i;
+      }
+
+      return factorial;
+    }
+
+    function getEntero(numero){
+      if(numeroFactorizable(numero))
+        return parseInt(numero);
+    }
+
+    function numeroFactorizable(numero){
+      //Valido que es un número entero y mayor de cero
+      return !isNaN(numero) && parseInt(numero) > 0;
+    }
+  </script>
+</head>
+<body>
+	<p>
+		El factorial de un número entero 'n' es una operación matemática que consiste en multiplicar n*(n-1)*(n-2) ... 1.<br/>
+		Ejemplo: el factorial de 5 (escrito como 5!) es: 5! = 5*4*3*2*1 = 120
+	</p>
+	<script>
+		var numero = prompt("Introduzca numero", "5");
+		if(numeroFactorizable(numero)){
+			document.write("(Bucle 'for') " + numero + "! = " + factorial(numero));
+			document.write("<br/>");
+			document.write("(Recursividad) " + numero + "! = " + factorialRecursivo(numero));
+		}
+		else{
+			alert('Se ha introducido un valor incorrecto (deber ser entero > 0)');
+		}
+	</script> 
+</body>
+</html>
