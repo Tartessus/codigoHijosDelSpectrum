@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Menú de navegación</title>
+<script type="text/javascript">
+	function anyade(){
+
+		var seleccion = document.getElementById("seleccion");
+  		var textoMostrar = document.getElementById("texto1").value;
+		var textoValue = document.getElementById("hiper1").value;
+  		
+		var nodoElemento = document.createElement("option");
+		nodoElemento.text = textoMostrar;
+		var nodoAtributo = document.createAttribute("value");
+		nodoElemento.setAttributeNode(nodoAtributo); // 
+		nodoElemento.value= textoValue;
+		
+		seleccion.add(nodoElemento);
+
+	}
+	
+	function borrar(){
+		var seleccion = document.getElementById("seleccion");
+		var textoEliminar = document.getElementById("texto2").value;
+		var opciones = seleccion.getElementsByTagName("option");
+		for (var i=0; i< opciones.length; i++){ 
+			if(opciones[i].text == textoEliminar){
+				seleccion.remove(i);
+			}
+		}
+		
+
+	}
+	function ir(){
+		var seleccion = document.getElementById("seleccion");
+		var indiceSeleccionado = seleccion.selectedIndex;
+		var direccionURL=(seleccion.getElementsByTagName("option"))[indiceSeleccionado].value;
+   		window.open(direccionURL,"");  
+	}
+	
+
+</script>
+</head>
+
+
+<body>
+	<form>
+		Lista de selección:
+		<select id="seleccion" onChange="ir();">
+			<option value="">Seleccione una página</option>
+			<option value="http://www.w3.org">W3 Consorcium </option>
+			<option value="http://www.google.es">GOOGLE</option>
+			<option value="http://www.marca.com">Marca</option>
+		</select>
+
+<br/> <br/>
+<br/> <br/>
+
+		Texto a mostrar:
+		<input type="text" id="texto1" value="w3c" size="20">
+	
+		Enlace:&nbsp;
+		<input type="text" id="hiper1" value="http://www.w3.org" size="20">
+		<p>&nbsp;
+
+		<input type="button" id="b1" value="Añadir elemento a la lista" onclick="anyade();">
+		</p>
+		<br> <br>
+
+		<p>Texto a eliminar:
+		<input type="text" id="texto2" value="nuevo" size="20"></p>
+		&nbsp;<input type="button" id="b2" value="Borrar elemento de la lista" onclick="borrar();">
+
+	</form>
+
+</body>
+</html>
