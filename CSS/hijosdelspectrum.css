@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Annie+Use+Your+Telescope|Bad+Script|Caveat|Courgette|Permanent+Marker|Shadows+Into+Light|Shadows+Into+Light+Two');
+@import url('https://fonts.googleapis.com/css?family=Lato|Lora|Raleway|Shadows+Into+Light+Two');
 
 .codigo {
   align: center;
@@ -71,7 +71,9 @@
     margin: 0 .4em;
     border-left:5px solid #E6E6E6;
     border-color:inherit;
-    font-size:1.2em;}
+    font-size:1.2em;
+}
+
 .cita > div { float:left; }
 
 /* Fuente para el cuerpo del Post */
