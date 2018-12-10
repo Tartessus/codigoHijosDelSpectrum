@@ -15,7 +15,7 @@ La aplicación permitirá ir añadiendo a una _**lista de descarga**_ el conteni
 ### Aspectos a tener en cuenta para el diseño
 Se tiene previsto añadir descargas para software y libros usando una librería de software libre. El único requisito es que se use Java, pero el diseño que se haga en esta práctica debe permitir añadir esa librería fácilmente para que se use sin ningún cambio el código que proporciona la funcionalidad de ordenar el informe por `id`, sumar el tamaño de la descarga y calcular el tiempo.
 
-También se podrá buscar contenido filtrando por alguno de sus datos como artista, director o actor. La interfaz de búsqueda podría tener controles tipo combobox para mostrar por ejemplo los artistas diponibles en nuestra base de datos.
+También se podrá buscar contenido filtrando por alguno de sus datos como artista, director o actor. La interfaz de usuario para hacer búsquedas podría tener controles tipo "listas desplegables" para mostrar por ejemplo los artistas diponibles en nuestra base de datos o filtrar contenido.
 
 Pruebas
 -------
