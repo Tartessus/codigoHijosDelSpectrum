@@ -12,3 +12,5 @@ Esta estructurada en varios pasos, se propone seguirlos paso a paso para ir desc
 3. Terminamos con [paso 3](https://github.com/Awes0meM4n/codigoHijosDelSpectrum/tree/master/Java/practicas/DescargApp/paso3) (refactorización de la solución para obtener código más reutilizable)
 
 **No mirar las soluciones hasta que no se haya terminado el trabajo o se esté completamente estancado**.
+
+_NOTA: Los diagramas están en formato hecho con [draw.io](https://draw.io)_
