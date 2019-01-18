@@ -24,8 +24,8 @@ Para poder realizar el examen es necesario usar el proyecto que se descarga desd
   * El método `toString()` devolverá un texto como el de la tabla (Descripción - Marca).
 * (1) Con la clase recién creada añada los dos primeros productos de pruebas al carrito de la compra.
 * (8 contando los 6 de los subapartados) En un futuro se incorporarán servicios de distintos proveedores de productos y sus propias librerías para incorporar los productos suministrados. Estas librerías serán fáciles de utilizar con los tipos de nuestra aplicación y todos tendrán un método `getDescripcion()` y `getPrecio()`. Cree los tipos necesarios para tener esta flexibilidad que se pide y que no haya que modificar nuestro código ya implementado.
-  * (2) Esos métodos servirán para que se pueda conocer el valor total del carrito con los productos escogidos. El método a utilizar se llamará `getValorCarrito()`.
-  * (3) Habrá otro llamado `getInformeCarrito()` que proporcionará un `String` con un listado de los productos ordenados por precio de menor a mayor y el valor total al final con una tabulación al principio.
+  * (2) Esos métodos servirán para que se pueda conocer el valor total del carrito con los productos escogidos. El método a utilizar se llamará `getValorCarrito()` que pertenece a la clase `Carrito`.
+  * (3) Habrá otro llamado `getInformeCarrito()` que proporcionará un `String` con un listado de los productos ordenados por precio de menor a mayor y el valor total al final con una tabulación al principio. También pertenece a la clase `Carrito`.
   * (1) Se añadirá otro de los productos y se comprobará que los retornos se actualizaron correctamente.
 * (2) Compruebe que su diseño funciona con una librería externa incorporando la clase `com.examen.Product3rdParty` para añadir el producto `“Crime & Punishment”` con precio de `0,46€`.
 * (1) Si no lo ha hecho ya, añada en `App` todos los productos a una `Collection` en una variable de clase inmutable y que sólo se vea en la clase `App`.
