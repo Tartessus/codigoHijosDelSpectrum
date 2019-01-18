@@ -1,5 +1,7 @@
 # Examen Fundamentos Java
 
+> NOTA: El tiempo para terminarlo no debería exceder de 2 horas para un junior. La solución se puede ver tanto descargando el proyecto completo comprimido en [solucion.rar](https://github.com/Awes0meM4n/codigoHijosDelSpectrum/raw/master/Java/evaluacion/fundamentos1/solucion.rar) como en el código dentro de la [carpeta solucion](https://github.com/Awes0meM4n/codigoHijosDelSpectrum/tree/master/Java/evaluacion/fundamentos1/solucion)
+
 Vamos crear algunas partes del código de una aplicación de compras.
 
 Los productos que se usarán para las pruebas son:
