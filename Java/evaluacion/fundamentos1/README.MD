@@ -13,7 +13,7 @@ Los productos que se usarán para las pruebas son:
 
 El usuario en la versión final podrá ir añadiéndolos de un catálogo mayor, pero para la prueba se van a instanciar estos cuatro al inicio de la ejecución en el `main`.
 
-Para poder realizar el examen es necesario usar el proyecto que se descarga desde examenFundamentos1.rar.
+Para poder realizar el examen es necesario usar el proyecto que se descarga desde [ExamenFundamentos1.rar](https://github.com/Awes0meM4n/codigoHijosDelSpectrum/raw/master/Java/evaluacion/fundamentos1/ExamenFundamentos1.rar).
 
 **Los puntos evaluables, y ponderados con el valor entre paréntesis, son**:
 * (2 puntos) Todos los tipos que implemente pertenecerán al paquete `com.acing` excepto el que contenga el `main` que estará en la clase `com.app.App`.
