@@ -18,10 +18,9 @@ Para poder realizar el examen es necesario usar el proyecto que se descarga desd
 **Los puntos evaluables, y ponderados con el valor entre paréntesis, son**:
 * (2 puntos) Todos los tipos que implemente pertenecerán al paquete `com.acing` excepto el que contenga el `main` que estará en la clase `com.app.App`.
 * (2) Crear una clase que sirva de carrito de la compra llamada `Carrito` donde se podrán consultar los productos cargados mediante el método `addProducto(T)`. Debe elegir y crear un tipo apropiado para `T`, **no se pide que sea genérico**. Este método devolverá `true` si se ha cargado y `false` si no. `App` debe tener una variable de instancia de tipo `Carrito` para controlar la compra.
-* (4 un punto cada subapartado) Crear un tipo para manejar los datos de un producto teniendo en cuenta las siguientes consideraciones:
+* (3 un punto cada subapartado) Crear un tipo para manejar los datos de un producto teniendo en cuenta las siguientes consideraciones:
   * En un futuro se quiere poder trabajar con la marca del producto para filtrar datos o hacer descuentos.
-  * El constructor de este tipo tendrá una sobrecarga con `id` y otra sin `id`, pero uno de ellos aprovechará el código del otro.
-  * También tendrá constructor por defecto y no podrán modificarse sus atributos.
+  * El constructor de este tipo tendrá una sobrecarga con `id` y otra sin `id`, pero uno de ellos aprovechará el código del otro. También tendrá constructor por defecto y no podrán modificarse sus atributos.
   * El método `toString()` devolverá un texto como el de la tabla (Descripción - Marca).
 * (1) Con la clase recién creada añada los dos primeros productos de pruebas al carrito de la compra.
 * (8 contando los 6 de los subapartados) En un futuro se incorporarán servicios de distintos proveedores de productos y sus propias librerías para incorporar los productos suministrados. Estas librerías serán fáciles de utilizar con los tipos de nuestra aplicación y todos tendrán un método `getDescripcion()` y `getPrecio()`. Cree los tipos necesarios para tener esta flexibilidad que se pide y que no haya que modificar nuestro código ya implementado.
