@@ -8,7 +8,7 @@ Para teoría pueden servirte de repaso las siguientes preguntas:
 1. **Diferencias** entre una clase normal, una abstracta y una interfaz.
 1. ¿Qué **relación** tiene el concepto "erasure" con la definición de clase:
 `class MiClase implements Comparable<String>, Comparable<Integer> {...}`? Explícalo.
-1. Explica si compilará la sentencia: Object[] array = { "", 0, true, new Object() };
-1. Explica si es sintácticamente correcta la sentencia: Collection<int> enteros = new ArraList<>();
+1. Explica si compilará la sentencia: `Object[] array = { "", 0, true, new Object() };`
+1. Explica si es sintácticamente correcta la sentencia: `Collection<int> enteros = new ArraList<>();`
 
 Pondré las respuestas de todas.
