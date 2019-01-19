@@ -4,6 +4,8 @@ Prácticas
 En este apartado se reunen una serie de prácticas útiles para el desarrollo del curso [Java de Zero a Zen (JAZZ) que se puede encontrar en mi blog](https://hijosdelspectrum.blogspot.com/p/curso-java-de-zero-zen-jazz-descripcion.html)
 En cada entrada del curso o su índice se pueden encontrar menciones a otras prácticas. Las que hay aquí suelen ser más extensas, es material adicional o son recopilaciones de otros sitios.
 
+También puedes usar como prácticas las [autoevaluaciones](https://github.com/Awes0meM4n/codigoHijosDelSpectrum/tree/master/Java/evaluacion) que publico y que vienen de evaluaciones de cursos presenciales que imparto.
+
 Cada prácticas esta contenida en su propia carpeta y tiene sus propias instrucciones para aprovecharlas mejor:
 1. [AsistenciaMotor](https://github.com/Awes0meM4n/codigoHijosDelSpectrum/tree/master/Java/practicas/AsistenciaMotor#pr%C3%A1ctica-taller): Diseñar e implementar un prototipo de atención mecánica reutilizando clases del curso Java JAZZ.
 1. [DescargApp](https://github.com/Awes0meM4n/codigoHijosDelSpectrum/tree/master/Java/practicas/DescargApp#practica-descargas-web): Diseñar e implementar un prototipo basado en el supuesto de una aplicación de descarga de contenido.
