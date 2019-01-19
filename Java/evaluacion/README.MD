@@ -1,7 +1,7 @@
 # Evaluación
 En este apartado se agrupan distintas evaluaciones para comprobar tus conocimientos.
 
-Para evaluaciones prácticas mira en los distintos exámenes (pondré el de esta semana cuando haya acabado el exámen).
+Para evaluaciones prácticas mira en los distintos exámenes y sus soluciones.
 
 Para teoría pueden servirte de repaso las siguientes preguntas:
 1. Diferencias al comparar entre usar los operadores `foo = bar`, `foo == bar` y el método `foo.equals(bar)`
@@ -11,4 +11,4 @@ Para teoría pueden servirte de repaso las siguientes preguntas:
 1. Explica si compilará la sentencia: `Object[] array = { "", 0, true, new Object() };`
 1. Explica si es sintácticamente correcta la sentencia: `Collection<int> enteros = new ArrayList<>();`
 
-Pondré las respuestas de todas.
+Puedes ver las [respuestas a estas preguntas](https://github.com/Awes0meM4n/codigoHijosDelSpectrum/blob/master/Java/evaluacion/Respuestas.MD#respuestas-a-las-preguntas).
