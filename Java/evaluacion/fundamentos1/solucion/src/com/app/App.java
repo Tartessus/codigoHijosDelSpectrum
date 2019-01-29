@@ -11,42 +11,38 @@ import com.acing.Producto;
 import com.acing.ProductoExterno;
 
 public class App {
-	// Nos piden crear la coleccion con estos modificadores
-	// variable de clase (static)
-	// inmutable (final) y
-	// que solo se vea en la clase (private)
-	// Lo correcto es escribir el nombre en mayusculas para constantes
+    // Nos piden crear la coleccion con estos modificadores
+    // variable de clase (static)
+    // inmutable (final) y
+    // que solo se vea en la clase (private)
+    // Lo correcto es escribir el nombre en mayusculas para constantes
     private final static Collection<Producto> PRODUCTOS = new ArrayList<>();
     private Carrito carrito;
     int[] almacen;
     
     public Carrito getCarrito() {
 		return carrito;
-	}
+    }
     
-	public int[] getAlmacen() {
-		return almacen;
-	}
-	
-	public void setAlmacenHastaId(int id) {
-		almacen = new int[id + 1];
-	}
+    public int[] getAlmacen() {
+	return almacen;
+    }
 
-	public App() {
-		super();
-		carrito = new Carrito();
-	}
+    public void setAlmacenHastaId(int id) {
+	almacen = new int[id + 1];
+    }
 
-	public static void main(String[] args) {
+    public App() {
+	super();
+	carrito = new Carrito();
+    }
+
+    public static void main(String[] args) {
         
         Producto refresco = new Producto(1, new Marca("Coca Cola"), "12 latas de Refresco", 6.01);
         Producto leche = new Producto(2, new Marca("President"), "Leche Semidesnatada 1 litro", .72);
         Producto dentifrico = new Producto(5, new Marca("Oral B"), "Dentifrico", 1.99);
         Producto agua = new Producto(8, new Marca("Font Vella"), "6 botellas 1,5 litros", 2.99);
-        PRODUCTOS.add(refresco);
-        PRODUCTOS.add(leche);
-        PRODUCTOS.add(dentifrico);
-        PRODUCTOS.add(agua);
         
         App app = new App();
         
@@ -67,10 +63,16 @@ public class App {
         app.getCarrito().addProducto(libro);
         System.out.println("Contenido carrito es:\n" + app.getCarrito().getInformeCarrito());
         
+	// Pongo todos los productos en la Collection que me piden
+	PRODUCTOS.add(refresco);
+        PRODUCTOS.add(leche);
+        PRODUCTOS.add(dentifrico);
+        PRODUCTOS.add(agua);
+	
         // Compruebo que funciona el metodo
         int maximoID = getMaximoId(PRODUCTOS);
         System.out.println("Maximo id es: " + maximoID);
-        
+		
         // Se creara un array de la dimension correcta con los indices que necesitamos
         app.setAlmacenHastaId(maximoID);
         // Cargo las existencias en el indice que corresponde con el id
@@ -93,29 +95,37 @@ public class App {
     	// Empiezo en un valor incorrecto y que debe actualizarse si hay productos
         int maximoId = -1;
         for (Identificable producto : productos) {
-            if(maximoId < producto.getId())
+            if(maximoId < producto.getId()) {
                 maximoId = producto.getId();
+	    }
         }
         
         return maximoId;
     }
 
     // Aqui necesito que sea un tipo que implemente las dos interfaces
-    public <T extends Identificable & Comerciable> boolean addCarrito(T producto) {
+    public <T extends Identificable & Comerciable> boolean addToCarrito(T producto) {
         boolean agregado = false;
+	String mensaje;
         if(cantidadEnAlmacenDe(producto) > 0) {
             agregado = getCarrito().addProducto(producto);
-            getAlmacen()[producto.getId()]--;
-            System.out.println("Quedan " + cantidadEnAlmacenDe(producto) + " de " + producto);
+	    if(agregado) {
+	        getAlmacen()[producto.getId()]--;
+                mensaje = "Quedan " + cantidadEnAlmacenDe(producto) + " de " + producto;
+	    }
+            else{
+		mensaje = "Ocurrió un error al añadir " + producto;
+	    }
         }
         else {
-            System.out.println("No hay existencias de " + producto);
+            mensaje = "No hay existencias de " + producto;
         }
+	System.out.println(mensaje);
         
         return agregado;
     }
 
-	private int cantidadEnAlmacenDe(Identificable producto) {
-		return getAlmacen()[producto.getId()];
-	}
+    private int cantidadEnAlmacenDe(Identificable producto) {
+	return getAlmacen()[producto.getId()];
+    }
 }
