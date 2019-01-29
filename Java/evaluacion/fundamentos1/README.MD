@@ -26,8 +26,12 @@ Para poder realizar el examen es necesario usar el proyecto que se descarga desd
   * El método `toString()` devolverá un texto como el de la tabla (Descripción - Marca).
 * (1) Con la clase recién creada añada los dos primeros productos de pruebas al carrito de la compra.
 * (8 contando los 6 de los subapartados) En un futuro se incorporarán servicios de distintos proveedores de productos y sus propias librerías para incorporar los productos suministrados. Estas librerías serán fáciles de utilizar con los tipos de nuestra aplicación y todos tendrán un método `getDescripcion()` y `getPrecio()`. Cree los tipos necesarios para tener esta flexibilidad que se pide y que no haya que modificar nuestro código ya implementado.
-  * (2) Esos métodos servirán para que se pueda conocer el valor total del carrito con los productos escogidos. El método a utilizar se llamará `getValorCarrito()` que pertenece a la clase `Carrito`.
-  * (3) Habrá otro llamado `getInformeCarrito()` que proporcionará un `String` con un listado de los productos ordenados por precio de menor a mayor y el valor total al final con una tabulación al principio. También pertenece a la clase `Carrito`.
+  * (2) Esos métodos servirán para que se pueda conocer el valor total del carrito con los productos escogidos. El método a utilizar se llamará `getValorCarrito()` que pertenecerá a la clase `Carrito`.
+  * (3) `Carrito` tendrá otro método llamado `getInformeCarrito()` que:
+    * Devolverá un `String` con un listado de los productos
+      * Cada producto en una línea y con su precio
+      * Ordenados por precio de menor a mayor
+    * En la última línea el valor total con una tabulación al principio.
   * (1) Se añadirá otro de los productos y se comprobará que los retornos se actualizaron correctamente.
 * (2) Compruebe que su diseño funciona con una librería externa incorporando la clase `com.examen.Product3rdParty` para añadir el producto `“Crime & Punishment”` con precio de `0,46€`.
 * (1) Si no lo ha hecho ya, añada en `App` todos los productos a una `Collection` en una variable de clase inmutable y que sólo se vea en la clase `App`.
@@ -39,4 +43,4 @@ Para poder realizar el examen es necesario usar el proyecto que se descarga desd
   * El control de existencias será implementado con `Arrays`, pero al tamaño del array se creará con los huecos necesarios para tener desde el ID 1 hasta el mayor que haya en la colección de productos del punto anterior sin **“magic numbers”**.
   * Para conseguir el máximo ID, haga un método privado, estático y genérico que devuelva el máximo ID en una `Collection<T>`, pasada como argumento, de un tipo `T` que sólo tenga un método: `getId()`.
 * (2) `App` tendrá un método `addToCarrito(T)` que no permitirá añadir los productos sin existencias al carrito. `T` no puede ser del tipo `"Producto"` si no que será un tipo que implemente las interfaces necesarias hasta ahora para esta funcionalidad.
-* (1) Mostrará el mensaje `“No hay existencias de [Producto]”` si no queda en el almacén. Si lo añade al carrito restará de las existencias y mostrará el mensaje `“Quedan X de [Producto]”` donde `X` es el número de existencias tras añadir el producto al carrito.
+* (1) Mostrará el mensaje `“No hay existencias de [Producto]”` si no queda en el almacén. Si lo añade al carrito restará de las existencias y mostrará el mensaje `“Quedan X de [Producto]”` donde `X` es el número de existencias tras añadir el producto al carrito. En caso de no añadirse el producto se informará `"Ocurrió un error al añadir [Producto]"`.
