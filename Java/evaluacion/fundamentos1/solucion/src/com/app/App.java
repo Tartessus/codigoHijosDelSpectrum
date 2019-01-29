@@ -82,9 +82,9 @@ public class App {
         app.getAlmacen()[5] = 0;
         app.getAlmacen()[8] = 1;
         
-        app.addCarrito(dentifrico);
+        app.addToCarrito(dentifrico);
         System.out.println("Contenido carrito es:\n" + app.getCarrito().getInformeCarrito());
-        app.addCarrito(agua);
+        app.addToCarrito(agua);
         System.out.println("Contenido carrito es:\n" + app.getCarrito().getInformeCarrito());
     }
     
