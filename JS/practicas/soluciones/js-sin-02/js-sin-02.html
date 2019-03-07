@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>js-sin-02</title>
+<script>
+	function calcularLetraDNI(numeroDNI){
+		var letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E'];
+		return letras[numeroDNI % letras.length];
+
+		//Otra forma de hacerlo
+		//letras = letras.join("");
+		//return letras.charAt(numeroDNI % letras.length);
+	}
+	
+	function numeroDNIValido(numeroDNI){
+		return !isNaN(numeroDNI) && 0 <= numeroDNI && numeroDNI <= 99999999;
+	}
+	
+	function separarNumeroDeLetra(nif){
+		var separado;
+		
+		if(nif && nif.length > 1){
+			var nifLimpio = nif.replace(/[^A-Za-z0-9]/g, "");//Ver https://www.w3schools.com/jsref/jsref_obj_regexp.asp
+			var nifLimpio = nif.replace(/\W|_/g, "");//https://www.w3schools.com/jsref/jsref_regexp_wordchar_non.asp
+
+			var numero = nifLimpio.substring(0, nifLimpio.length - 1);
+			var letra = nifLimpio.charAt(nifLimpio.length - 1);
+
+
+			separado = [ numero, letra ];
+		}
+		
+		return separado;
+	}
+	
+  function validarDNICompleto(completoDNI){
+		validarDatos(separarNumeroDeLetra(nif));
+	}
+
+	function validarDatos(numeroDNI, letra){
+		var valido = false;
+		if(numeroDNI != null && numeroDNIValido(numeroDNI)){
+			if(letra.toUpperCase() == calcularLetraDNI(numeroDNI)){
+				valido = true;
+				alert("Número y letras correctos");
+			}
+			else
+				alert("El número es válido pero la letra no corresponde");
+		}
+		else{
+			alert("Número de DNI introducido no es válido");
+		}
+		
+		return valido;
+	}
+</script>
+</head>
+<body>
+	Se le pide un DNI para comprobar su letra:
+	<script>
+		function pedirDNI(){
+		  	var numeroDNI = prompt("Introduzca DNI", "");
+			return separarNumeroDeLetra(numeroDNI);
+	  	}
+	
+		var separado;
+    	//var promptCorrecto = false;
+    	//while(!promptCorrecto){
+		//	separado = pedirDNI();
+		//	if(separado)
+		//	   promptCorrecto = separado.length == 2;
+		//}
+    	
+    	//Es lo mismo que arriba
+    	while(!(separado = pedirDNI()));
+    	
+		numeroDNI = separado[0];
+		var letra = separado[1];
+		document.write("<br/>El NIF introducido fue: " + numeroDNI + "-" + letra);
+		if(!validarDatos(numeroDNI, letra) && numeroDNIValido(numeroDNI)){
+			document.write("<br/>La letra correspondiente es: " + calcularLetraDNI(numeroDNI));
+		}
+	</script> 
+</body>
+</html>

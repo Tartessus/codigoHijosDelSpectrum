@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>js-dom-01</title>
+<script>
+	function extraerInfo(){
+		//var enlacesEnPagina = document.getElementsByTagName("a");
+		var enlacesEnPagina = document.links;
+		var direccionPenultimo = enlacesEnPagina[enlacesEnPagina.length - 2].attributes.href.value;
+		var primerParrafo = document.querySelector("p");//Devuelve el primero
+		var enlacesSegundoParrafo = document.getElementsByTagName("p")[1].getElementsByTagName("a").length;
+		var direccionesEnlaces = [];//Inicializar array vacio
+		for(var i = 0; i < enlacesEnPagina.length; i++){//i in enlacesEnPagina){
+			//if(enlacesEnPagina[i].attributes){
+				direccionesEnlaces.push(enlacesEnPagina[i].href);//attributes.getNamedItem("href").value);
+			//} else alert(enlacesEnPagina[i] + " no tiene attributes");
+		}
+		var enlacesPrueba4 = direccionesEnlaces.filter(esPrueba4);
+		
+		//Preparamos lineas del informe
+		var paraImprimir = new Array(6);
+		paraImprimir[0] = "Número de enlaces de la página: " + enlacesEnPagina.length;
+		paraImprimir[1] = "Dirección a la que enlaza el penúltimo enlace: " + direccionPenultimo;
+		paraImprimir[2] =
+			"Texto interior y HTML del primer párrafo:<br/>\
+			<strong>TEXTO (textContent):</strong><br/>" + primerParrafo.textContent +
+			"<br/><strong>HTML (innerHTML):</strong><br/>" + primerParrafo.innerHTML;
+		paraImprimir[3] = "Número de enlaces del segundo párrafo: " + enlacesSegundoParrafo;
+		paraImprimir[4] = "Mostrar todos los enlaces de la página: " + direccionesEnlaces;
+		paraImprimir[5] = "Contar el número de enlaces a http://prueba4: " + enlacesPrueba4.length;
+		
+		imprimirResultado(paraImprimir);
+	}
+		
+	function esPrueba4(href){
+		//return href.includes("http://prueba4");
+		return href.indexOf("http://prueba4") >= 0;
+	}
+	
+	function imprimirResultado(lineasInforme){
+		var fuente = "font-family:arial; font-weight:bold;";
+		document.write('<div style="background-color:blue;color:white;' + fuente + '">\
+		RESULTADO DE LA PRÁCTICA</div>');
+		for(var i = 0; i < lineasInforme.length; i++){
+			var num = i + 1;
+			document.write("<div style='background-color:lightgray;" + fuente + "'>Punto " + num + "</div>"
+				+ lineasInforme[i]);
+		}
+	}
+	
+</script>
+</head>
+<body>
+	 <p>Lorem ipsum dolor sit amet, <a href="http://prueba1">consectetuer adipiscing
+elit</a>. Sed mattis enim vitae orci. Phasellus libero. Maecenas nisl arcu,
+consequat congue, commodo nec, commodo ultricies, turpis. Quisque sapien nunc,
+posuere vitae, rutrum et, luctus at, pede. Pellentesque massa ante, ornare id,
+aliquam vitae, ultrices porttitor, pede. Nullam sit amet nisl elementum elit
+convallis malesuada. Phasellus magna sem, semper quis, faucibus ut, rhoncus
+non, mi. <a href="http://prueba2">Fusce porta</a>. Duis pellentesque, felis eu
+adipiscing ullamcorper, odio urna consequat arcu, at posuere ante quam non
+dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis
+scelerisque. Donec lacus neque, vehicula in, eleifend vitae, venenatis ac,
+felis. Donec arcu. Nam sed tortor nec ipsum aliquam ullamcorper. Duis accumsan
+metus eu urna. Aenean vitae enim. Integer lacus. Vestibulum venenatis erat eu
+odio. Praesent id metus.</p>
+<p>Aenean at nisl. Maecenas egestas dapibus odio. Vestibulum ante ipsum primis
+in faucibus orci luctus et ultrices posuere cubilia Curae; Proin consequat
+auctor diam. <a href="http://prueba3">Ut bibendum blandit est</a>. Curabitur
+vestibulum. Nunc malesuada porttitor sapien. Aenean a lacus et metus venenatis
+porta. Suspendisse cursus, sem non dapibus <a href="http://prueba4">ligin sem eng massa</a>.
+tincidunt, lorem magna porttitor
+felis, id sodales dolor dolor sed urna. Sed rutrum nulla vitae tellus. Sed quis
+eros nec lectus tempor lacinia. Aliquam nec lectus nec neque aliquet dictum.
+Etiam <a href="http://prueba4">consequat sem quis massa</a>. Donec aliquam
+euismod diam. In magna massa, mattis id, pellentesque sit amet, porta sit amet,
+lectus. Curabitur posuere. Aliquam in elit. Fusce condimentum, arcu in
+scelerisque lobortis, ante arcu scelerisque mi, at cursus mi risus sed
+tellus.</p>
+<p>Duis pellentesque, felis eu adipiscing ullamcorper, odio urna consequat arcu, at posuere ante quam non
+dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis
+scelerisque. Donec lacus neque, <a href="http://prueba2"> vehicula in, eleifend vitae </a> venenatis ac,
+felis. Donec arcu. Nam sed tortor nec ipsum aliquam ullamcorper. Duis accumsan
+metus eu urna. Aenean vitae enim. Integer lacus. Vestibulum venenatis erat eu
+odio. Praesent id metus.</p>
+<script>extraerInfo()</script>
+</body>
+</html>

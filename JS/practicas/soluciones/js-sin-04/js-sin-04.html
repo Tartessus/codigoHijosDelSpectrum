@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>js-sin-04</title>
+<script>
+	function esPalindromo(cadena) {
+		//var cadenaSinEspacios = cadena.replace(/ /g, "").toUpperCase();
+		var cadenaSinEspacios = cadena.split(" ").join("").toUpperCase();
+		return cadenaSinEspacios == cadenaSinEspacios.split("").reverse().join("");
+	}
+</script>
+</head>
+<body>
+	<p>
+		Palíndromo es una expresión que se lee de la misma forma desde la izquierda y desde la derecha (no tener en cuenta las mayúsculas y minúsculas a la hora de valorar si es palíndromo).
+		Ejemplo: "La ruta nos aporto otro paso natural"
+	</p>
+	<script>
+		var cadena = prompt("Escriba una expresión", "La ruta nos aporto otro paso natural");
+		document.write('"' + cadena + '" ' + (esPalindromo(cadena) ? "ES": "NO es") + " palíndromo");
+	</script> 
+</body>
+</html>
