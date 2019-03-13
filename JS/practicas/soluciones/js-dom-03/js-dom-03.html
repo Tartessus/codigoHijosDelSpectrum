@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Menú de navegación</title>
+	<script type="text/javascript">
+		function ir(){
+			var menu = document.getElementById("seleccion");
+			window.open(menu.options[menu.selectedIndex].value);
+		}
+		
+		function add(){
+			var opcion = document.createElement("option");
+			opcion.value = document.getElementById("enlace").value;
+			opcion.text = document.getElementById("textoNuevo").value;
+			document.getElementById("seleccion").add(opcion, 0);
+		}
+		
+		function borrar(){
+			var opciones = document.getElementById("seleccion").options;
+			var textoElegido = document.getElementById("textoBorrar").value;
+			//Para borrar mejor recorrer array a la inversa
+			for(var i = opciones.length - 1; i >= 0; i--){
+				if(opciones[i].text == textoElegido)
+					opciones.remove(i);
+			}
+		}
+	</script>
+</head>
+<body>
+	<form>
+			Lista de selección:
+			<select id="seleccion" onChange="ir()">
+				<option value="">Seleccione una página</option>
+				<option value="http://www.w3.org">W3 Consorcium </option>
+				<option value="http://www.google.es">GOOGLE</option>
+				<option value="http://www.marca.com">Marca</option>
+			</select>
+	
+	<br> <br><br> <br>
+	
+			Texto a mostrar:
+			<input type="text" id="textoNuevo" value="Hijos del Spectrum" size="20">
+			Enlace:
+			<input type="text" id="enlace" value="http://hijosdelspectrum.blogspot.com.es/" size="20">
+			
+			<p>
+				<input type="button" id="addBtn" value="Añadir elemento a la lista" onclick="add()">
+			</p>
+			
+	<br> <br>
+			
+			<p>Texto a eliminar:
+				<input type="text" id="textoBorrar" value="Marca" size="20">
+			</p>
+			
+			<input type="button" id="delBtn" value="Borrar elemento de la lista" onclick="borrar()">
+		</form>
+</body>
+</html>
