@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="estilos1.css" rel="stylesheet" type="text/css"/>
+<title>Practica js-dom-04</title>
+<script>
+	var estilos = [ "estilos1.css", "estilos2.css" ];
+	var estiloElegido = 0;
+	function cambiarHojaEstilos(){
+		estiloElegido++;
+		document.querySelector("link").href = estilos[estiloElegido % estilos.length];
+	}
+	
+	function addClassName(){
+		document.querySelector("p").className = "resaltar";
+	}
+	
+	function quitarClassName(){
+		document.querySelector("p").className = "";
+	}
+	
+	var estiloPorDefecto = "color:brown;background-color:yellow;";
+	function alterarEstilo(){
+		var estilo = document.querySelector("p").style;
+		//Se puede asignar <color>, transparent o inherit
+		//Ver http://www.w3.org/TR/CSS2/colors.html#propdef-background-color
+		//Pero recordad que el estilo más específico tiene mayor prioridad
+		
+		//Ejemplo que impera transparent
+		//estilo.backgroundColor = estilo.backgroundColor != "yellow"? "yellow" : "transparent";
+		
+		//Ejemplo que no cambia color
+		//estilo.backgroundColor = estilo.backgroundColor != "yellow" ? "yellow" : "";
+		
+		//Ejemplo con cambio de estilo por texto
+		estilo.cssText = estilo.cssText.replace(/ /g,"") != estiloPorDefecto ? estiloPorDefecto : "inherit";
+		
+		//Ojo, style es de sólo lectura así que no se puede asignar directamente
+		//Ver https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style#Setting_styles
+	}
+		
+	function ocultarBotones(){
+		var enlace = document.getElementById("enlace");
+		enlace.href = "http://bing.com/";
+		enlace.textContent = "Ir a Bing";
+		var botones = document.querySelectorAll("button");
+		for (var i = 0; i < botones.length; i++){
+			//botones[i].className = "ocultar";
+			ocultarElemento(botones[i]);
+		}
+	}
+	
+	function ocultarElemento(elemento){
+		if(elemento.style)
+			elemento.style.display = "none";//"hidden";
+	}
+</script>
+<style type="text/css">
+  #botones > button {display:block;margin-bottom:1em;}
+</style>
+</head>
+<body>
+<h1>Modificar estilos</h1>
+<p>Esto es simplemente un párrafo de texto</p><br/>
+<a id="enlace" href="http://google.es">Ir a Google</a><br/><br/>
+<!-- <button id="1" onclick="cambiarHojaEstilos();">Cambiar hoja de estilos</button><br/><br/>
+<button id="2" onclick="addClassName()">Añadir className</button><br/><br/>
+<button id="3" onclick="quitarClassName()">Quitar className</button><br/><br/>
+<button id="4" onclick="alterarEstilo()">Usando style</button><br/><br/>
+<button id="5" onclick="ocultarBotones()">Cambia enlace</button><br/><br/>
+ -->
+ <!-- Si insertamos los botones a una capa es mas sencillo ocultarlos -->
+<div id="botones">
+  <button id="1" onclick="cambiarHojaEstilos();">Cambiar hoja de estilos</button>
+  <button id="2" onclick="addClassName()">Añadir className</button>
+  <button id="3" onclick="quitarClassName()">Quitar className</button>
+  <button id="4" onclick="alterarEstilo()">Usando style</button>
+  <button id="5" onclick="ocultarBotones()">Cambia enlace</button>
+</div>
+<p>Esto es simplemente un párrafo de texto</p>
+</body>
+</html>
