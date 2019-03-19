@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Practica 9</title>
+<style>	button { width: 120px; } </style>
+<script>
+	var ventana;
+	var tiempoBalanceo;
+	var tiempoSalto;
+	var tiempoRestante;
+	const derecha = 1;
+	const izquierda = -1;//derecha * -1
+	var sentido;
+	var desplazamiento;
+	var moviendose;
+	var balanceo;//ID temporizador
+	//Es mejor tener el modelo separado de la IU
+	var x;
+	var y;
+	
+	function crearVentana(msBalan, msInterval, lado, avance, moverse) {
+		if(balanceo) clearInterval(balanceo);
+		if(ventana) ventana.close();
+		ventana = window.open("", "", "height=200,width=200,left=" + x + ",top=" + y);
+		/*tiempoBalanceo = 1000;
+		tiempoSalto = 100;
+		tiempoRestante = tiempoBalanceo;
+		sentido = izquierda;
+		desplazamiento = 10;
+		moviendose = true;*/
+		
+		tiempoBalanceo = msBalan;
+		tiempoSalto = msInterval;
+		tiempoRestante = tiempoBalanceo;
+		sentido = lado;
+		desplazamiento = avance;
+		//moviendose = moverse;
+
+		moverse ? iniciar() : detener();
+	}
+	
+	function balancear(){
+		var moverse = desplazamiento;
+		if(tiempoRestante - tiempoSalto <= 0){
+			moverse *= (tiempoSalto - 2*tiempoRestante)/tiempoSalto;
+			cambiarSentido();
+		}
+		x += sentido*moverse;
+		ventana.moveTo(x, y);
+		tiempoRestante -= tiempoSalto;
+		
+		//Sirve para que se pueda hacer algo "extra" en cada llamada
+		informar();
+	}
+	
+	function informar(){
+	}
+	
+	function cambiarSentido(){
+		tiempoRestante += tiempoBalanceo;
+		sentido *= -1;
+	}
+	
+	function detener(){
+		moviendose = false;
+		clearInterval(balanceo);
+	}
+	
+	function iniciar(){
+		moviendose = true;
+		balanceo = setInterval(balancear, tiempoSalto);
+	}
+	
+	function interruptor(){
+		//moviendose = !moviendose;
+		moviendose ? detener() : iniciar();
+	}
+</script>
+<style type="text/css">
+	/*#wrap {
+	   width:100%;
+	}*/
+	#wrap:after {
+	    /* Prevent wrapper from shrinking height, 
+	    see http://www.positioniseverything.net/easyclearing.html */
+	    content: ".";
+	    display: block;
+	    height: 0;
+	    clear: both;
+	    visibility: hidden;
+	}
+	#wrap .container {
+	    float: left;
+	    //width:33%;
+	    height: 250px;
+	}
+</style>
+<script>
+	var xmax;
+	var xmin;
+	function empezar(){
+		var balan = parseInt(document.getElementById('balanceo').value);
+		var salto = parseInt(document.getElementById('salto').value);
+		var lado = document.getElementById('sentido').value;
+		//lado = lado == "izquierda" ? izquierda : lado == "derecha" ? derecha : 0;
+		var avanza = parseInt(document.getElementById('desplazamiento').value);
+		var seMueve = document.getElementById('moverse').checked;
+		crearVentana(balan, salto, lado, avanza, seMueve);
+		
+		refrescarBoton();
+		document.getElementById("maximasX").textContent = "";
+		x = 250;
+		y = 200;
+		xmax = 0;
+		xmin = 1000;
+	}
+	
+	function refrescarBoton(){
+		document.getElementById("interruptor").innerHTML = moviendose ? "Detener" : "Mover";
+	}
+	
+	function actualizarExtremosX(){
+		document.getElementById("maximasX").textContent = "Máximas X: " + xmax + " | " + xmin;
+	}
+	
+	function alternar(){
+		interruptor();
+		refrescarBoton();
+		ventana.focus();
+	}
+	
+	function informar(){
+		//Registramos los valores extremos de X
+		if(xmax < x) {xmax = x; actualizarExtremosX();}
+		if(xmin > x) {xmin = x; actualizarExtremosX();}
+	}
+	
+	function cerrar(){
+		detener();
+		ventana.close();
+	}
+</script>
+</head>
+<body>
+	Configuración:<br>
+	Balanceo: <input id="balanceo" value="1000"/>  
+	Salto: <input id="salto" value="30"/> 
+	Sentido: <select id="sentido">
+			<!-- 
+			<option value="izquierda">Izquierda</option>
+			<option value="derecha">Derecha</option>
+			 -->
+		</select>
+	<script>
+		var select = document.getElementById('sentido');
+		//Añado izquierda
+		var opcion = document.createElement("option");
+		opcion.value = izquierda;
+		opcion.text = "Izquierda";
+		select.add(opcion);
+		//Añado derecha
+		opcion = document.createElement("option");
+		opcion.value = derecha;
+		opcion.text = "Derecha";
+		select.add(opcion);
+		//Deselecciono cualquier opcion
+		//select.value = ""
+	</script>
+	Desplazamiento: <input id="desplazamiento" value="3"/> 
+	Moviéndose: <input type="checkbox" id="moverse" checked/><br><br>
+	<button onclick="empezar()">Crear Ventana</button>
+	<button id="interruptor" onclick="alternar()">Detener</button>
+	<button onclick="cerrar()">Cerrar</button>
+
+	<div id="wrap" style="margin-top: 50px;">
+		<div class="container" style="background-color: gray; width: 146px;"></div>
+		<div class="container" style="background-color: black; width: 308px;"></div>
+		<div class="container" style="background-color: gray; width: 150px;"></div>
+	</div>
+	<p id="maximasX"></p>
+</body>
+</html>

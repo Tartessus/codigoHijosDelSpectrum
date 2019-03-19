@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Practica 9</title>
+<style>	button { width: 120px; } </style>
+<script>
+	var ventana;
+	var tiempoBalanceo;
+	var tiempoSalto;
+	var tiempoRestante;
+	const derecha = 1;
+	const izquierda = -1;//derecha * -1
+	var sentido;
+	var desplazamiento;
+	var moviendose;
+	var balanceo;
+	
+	function crearVentana() {
+		if(balanceo != null) clearInterval(balanceo);
+		ventana = window.open("", "", "height=200,width=200,left=250,top=250");
+		tiempoBalanceo = 1000;
+		tiempoSalto = 100;
+		tiempoRestante = tiempoBalanceo;
+		sentido = izquierda;
+		desplazamiento = 10;
+		moviendose = true;
+
+		iniciar();
+	}
+	
+	function balancear(){
+		if(tiempoRestante <= 0)
+			cambiarSentido();
+		ventana.moveBy(sentido*desplazamiento, 0);
+		tiempoRestante -= tiempoSalto;
+	}
+	
+	function cambiarSentido(){
+		tiempoRestante = tiempoBalanceo;
+		sentido *= -1;
+	}
+	
+	function detener(){
+		clearInterval(balanceo);
+	}
+	
+	function iniciar(){
+		balanceo = setInterval(balancear, tiempoSalto);
+	}
+	
+	function interruptor(){
+		moviendose = !moviendose;
+		var textoBoton;
+		if(moviendose){
+			iniciar();
+			textoBoton = "Detener";
+		}
+		else {
+			detener();
+			textoBoton = "Mover";
+		}
+		document.getElementById("interruptor").innerHTML = textoBoton;
+		ventana.focus();
+	}
+	
+	function cerrar(){
+		detener();
+		ventana.close();
+	}
+	
+</script>
+</head>
+<body>
+	<button onclick="crearVentana()">Crear Ventana</button>
+	<button id="interruptor" onclick="interruptor()">Detener</button>
+	<button onclick="cerrar()">Cerrar</button>
+</body>
+</html>
