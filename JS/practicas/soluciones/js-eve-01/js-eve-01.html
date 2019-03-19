@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="cuerpoBlanco.css" rel="stylesheet" type="text/css"/>
+<title>Practica JS EVE 1</title>
+<style>
+	/*Ocupar toda la pantalla
+	https://stackoverflow.com/questions/5721904/make-body-fill-entire-screen/17094908#17094908
+	*/
+	html, body {
+	height: 100%;
+	margin: 0px;
+	}
+	*{
+		margin-left: 20px;
+	}
+	span {
+		display: block;
+		padding-top: 20px;
+		font-size: 200%;
+		font-weight: bold;
+	}
+	#salida {
+		color: red;
+	}
+</style>
+<script type="text/javascript">
+	//Si lo tenemos en libreria se reutiliza cambiando el valor de la variable estilos
+	//Esto lo usamos en la Practica JS DOM 04
+	var estilos = [ "estilos.css", "estilos1.css" ];
+	var estiloElegido = 0;
+	function cambiarHojaEstilos(){
+		document.querySelector("link").href = estilos[++estiloElegido % estilos.length];
+	}
+	//Cambiamos el valor a las nuevas css
+	estilos = [ "cuerpoBlanco.css", "cuerpoNegro.css" ];
+	
+	function cambiarPorPulsacion(evento) {
+		//alert(evento.charCode + " | " + evento.key + " | " + evento.keyCode + " | " + evento.which);
+		var letra = evento.key;
+		if(letra == "c" || letra == "p")
+			cambiarHojaEstilos();
+	}
+	
+	function contarCaracteres(evento){
+		informar(evento.target.value.length);
+	}
+	
+	function verCoordenadas(evento){
+		informar("Has pinchado en: x=" + evento.clientX + " y=" + evento.clientY);
+	}
+	
+	function informar(texto) {
+		document.querySelector("#salida").textContent = texto;
+	}
+</script>
+</head>
+<body onclick="verCoordenadas(event)" onkeydown="cambiarPorPulsacion(event)">
+
+<span>Al presionar c o p cambiamos los estilos</span>
+<p>Si escribimos en el textbox pasan otras cosas. Y si hago click fuera otra</p>
+<input type="text" value="" oninput="contarCaracteres(event)" onblur="informar('')" onkeydown="event.stopPropagation()"/>
+<p id="salida"></p>
+
+</body>
+</html>
