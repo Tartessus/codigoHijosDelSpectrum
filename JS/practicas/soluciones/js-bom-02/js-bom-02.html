@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Práctica JS BOM 2</title>
+<style>
+	p { margin-left: 1em; }
+	div { margin: 1em; }
+	button:not(#crear) { margin-bottom: 1em; }
+	#crear { background-color: green; color: white;	}
+</style>
+<script>
+	var ventana;
+
+	function crearVentana() {
+		ventana = window.open("", "", "height=200,width=200");
+	}
+
+	function cambiarTamanho(x, y) {
+		//Si no existe y lo igualo a x
+		if(!y) y = x;
+		ventana.resizeBy(x, y);
+		//ventana.focus();
+	}
+
+	function mover(x, y) {
+		ventana.moveBy(x, y);
+		//ventana.focus();
+	}
+
+	function agrandar(x){
+	  cambiarTamanho(x);
+	  ventana.focus();
+	}
+</script>
+</head>
+<body>
+	<p>Manejo de la ventana con JavaScript</p>
+	<div>
+		<button onclick="crearVentana()" id="crear">Crear ventana</button>
+	</div>
+	<div>
+		<button onclick="agrandar(-10)">Menor</button>
+		<button onclick="agrandar(10)">Mayor</button>
+	</div>
+	<div>
+		<button onclick="mover(0, -10)">Arriba</button><br>
+		<button onclick="mover(-10, 0)">Izquierda</button>
+		<button onclick="mover(10, 0)">Derecha</button><br>
+		<button onclick="mover(0, 10)">Abajo</button>
+	</div>
+</body>
+</html>
