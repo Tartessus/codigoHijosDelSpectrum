@@ -13,3 +13,8 @@ Para teoría pueden servirte de repaso las siguientes preguntas:
 1. Explica si es sintácticamente correcta la sentencia: `Collection<int> enteros = new ArrayList<>();`
 
 Puedes ver las [respuestas a estas preguntas](https://github.com/Awes0meM4n/codigoHijosDelSpectrum/blob/master/Java/evaluacion/Respuestas.MD#respuestas-a-las-preguntas).
+
+## Comentarios a publicaciones
+He seleccionado publicaciones de Internet donde detecto puntos que puedne dar lugar a discusión o con "malas prácticas" que pueden ser corregidas ¿Puedes encontrar los errores y cómo solucionarlos?
+1. [Goodbye, Object Oriented Programming (Medium)](https://medium.com/@cscalfani/goodbye-object-oriented-programming-a59cda4c0e53)
+1. [Coloreando celdas, filas y columnas en un JTable (Medium)](https://medium.com/el-acordeon-del-programador/coloreando-celdas-filas-y-columnas-en-un-jtable-35b8f2c1abd3)
