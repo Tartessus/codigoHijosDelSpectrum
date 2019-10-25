@@ -1,4 +1,5 @@
 # Sintaxis (prueba rápida)
+>NOTA: El tiempo para terminarlo no debería exceder de 20 minutos para un alumno. Puedes autoevaluarte comprobando la [solución](https://github.com/Awes0meM4n/codigoHijosDelSpectrum/blob/master/Java/evaluacion/sintaxis1/Sintaxis1.java)
 
 Realice un programa que realice las siguientes operaciones:
 1. Declare un par de variable de tipo entero con nombre `inicio` y `fin` asignándoles los valores `4` y `9` a cada una.
