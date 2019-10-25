@@ -2,6 +2,7 @@
 En este apartado se agrupan distintas evaluaciones para comprobar tus conocimientos.
 
 Para evaluaciones prácticas mira en los distintos exámenes y sus soluciones:
+1. [Sintaxis 1](https://github.com/Awes0meM4n/codigoHijosDelSpectrum/tree/master/Java/evaluacion/sintaxis1)
 1. [Java Fundamentos 1](https://github.com/Awes0meM4n/codigoHijosDelSpectrum/tree/master/Java/evaluacion/fundamentos1)
 
 Para teoría pueden servirte de repaso las siguientes preguntas:
